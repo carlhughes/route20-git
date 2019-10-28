@@ -18,7 +18,6 @@ $(document).ready(function () {
     var point;
 
     var template = {
-      // autocasts as new PopupTemplate()
       title: "Name: {Name}",
       content: "{Comments}"
     };
@@ -51,7 +50,6 @@ $(document).ready(function () {
     });
 
     map.layers.addMany([tiledLayer, corridorPolygon, commentLayer]);
-	  //map.add();
 
     var searchWidget = new Search({
       view: view
@@ -78,9 +76,8 @@ $(document).ready(function () {
     view.ui.add(layerList, {
       position: "top-right"
     });
-    g = document.createElement('div');
+    var g = document.createElement('div');
     g.setAttribute("id", "swipe");
-    //g.setAttribute("style", "background-color: lightgrey");
     g.className = 'esri-widget--button esri-widget esri-interactive';
     g.role = 'button';
     g.innerHTML = '<img src="images/swipe_icon2.png" alt="Swipe Icon" style="width: 20px">'
@@ -95,9 +92,8 @@ $(document).ready(function () {
       index: 2
     }]);
 
-    m = document.createElement('div');
+    var m = document.createElement('div');
     m.setAttribute("id", "measure");
-    //m.setAttribute("style", "background-color: lightgrey");
     m.className = 'esri-widget--button esri-widget esri-interactive';
     m.role = 'button';
     m.innerHTML = '<img src="images/measure_icon.png" alt="Measure Widget" style="width: 20px">'
@@ -110,7 +106,6 @@ $(document).ready(function () {
 
 
     var measurement = new Measurement({
-      //view: view,
       activeTool: "distance"
     });
 
@@ -146,7 +141,7 @@ $(document).ready(function () {
     });
 
 
-    $("#submitComment").submit(function (event) {
+    $("#showComments").submit(function (event) {
       event.preventDefault();
       $('#helpContents').hide()
       $('#commentFormDiv').show();

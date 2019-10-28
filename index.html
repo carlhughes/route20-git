@@ -12,7 +12,7 @@
       <div class="collapse navbar-collapse h-100" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
         </ul>
- <button class="btn h-100 help-img" type="submit" id="aboutTool"><img src="images/help_white.png" class="img-fluid custom-img" alt="Help" id="help-img"></button>
+        <button class="btn h-100 help-img" type="submit" id="aboutTool"><img src="images/help_white.png" class="img-fluid custom-img" alt="Help" id="help-img"></button>
       </div>
     </nav>
   </div>
@@ -23,16 +23,14 @@
         <h4 class="w-100" style="text-align: center">Welcome to the Shrewsbury Route 20 Safety & Operations Improvements Master Plan Interactive Map!</h4>
         <br>
         <p>This map serves as a location for the public to provide its feedback on the design of Route 20 in Shrewsbury, Massachusetts. As we take a look at the concept for the corridor, please keep in mind that the design is meant to accommodate the long-term evolution of Route 20 based on planned new development in this part of the Town of Shrewsbury. You may provide comments on existing conditions in the corridor, but please consider adding comments on how the long-term concept works for you and the town, including how it plans to address land use and transportation goals.</p>
-		<p style="text-align: center; font-style: oblique; font-weight: bold;">Please visit our <a class="" href="https://www.mass.gov/shrewsbury-route-20-corridor-master-plan-study?auHash=ftwmQynrfMX5hkUyWKOxayW0SK1WWWcBxoCiOx2iXKo" target="_blank">study website</a> for more information.</p>  
-        <h5>
-        Instructions
-        </h6>
-        <p>Click the "Add Comment" button below to tell us what you think of the proposed plan. Provide your input by filling out the form, followed by a location, if necessary. </br>
+        <p style="text-align: center; font-style: oblique; font-weight: bold;">Please visit our <a class="" href="https://www.mass.gov/shrewsbury-route-20-corridor-master-plan-study?auHash=ftwmQynrfMX5hkUyWKOxayW0SK1WWWcBxoCiOx2iXKo" target="_blank">study website</a> for more information.</p>
+        <h5> Instructions </h5>
+        <p>Click the "Add Comment" button below to tell us what you think of the proposed plan. Provide your input by filling out the form, followed by a location, if necessary. <br>
         </p>
         <p>Click the "Swipe" icon <img src="images/swipe_icon2.png" alt="Swipe Icon" style="width: 20px"> under the address search in the top left to easily compare the proposed changes with the existing corridor.</p>
-        To enlarge the map, you may zoom inwards or outwards using your mouse or trackpad, or using the (+) and (-) arrows buttons located on the top left of the window. You may also drag the map in any direction to focus in on a certain area. </br>
+        <p> To enlarge the map, you may zoom inwards or outwards using your mouse or trackpad, or using the (+) and (-) arrows buttons located on the top left of the window. You may also drag the map in any direction to focus in on a certain area. <br>
         </p>
-        <form class="form-inline mt-2 mt-md-0 p-3" id="submitComment">
+        <form class="form-inline mt-2 mt-md-0 p-3" id="showComments">
           <button class="btn btn-primary btn-lg btn-block" type="submit" id="submitCommentBtn">Add Comment</button>
         </form>
       </div>
@@ -50,12 +48,14 @@
             <textarea class="form-control" id="commentField" placeholder="Enter your comments here" name="commentField" required></textarea>
             <div class="invalid-feedback"> Please enter a comment in the textarea. </div>
           </div>
-				<div class="row w-100">
-				  <div class="col-md-auto"><button class="btn btn-custom m-2 w-100" aria-pressed="false" data-toggle="button" id="getLocation" type="action">Add a location</button></div>
-				  <div class="col">OPTIONAL: You may give your comment a location in the map by clicking this button. </div>
-			  </div>
-			<button class="btn btn-primary m-2 btn-lg btn-block" id="submitComment" type="submit">Save Comment</button>
-			          <button class="btn m-2 pull-right" id="cancelComment" type="reset">Cancel</button>
+          <div class="row w-100">
+            <div class="col-md-auto">
+              <button class="btn btn-custom m-2 w-100" aria-pressed="false" data-toggle="button" id="getLocation" type="action">Add a location</button>
+            </div>
+            <div class="col">OPTIONAL: You may give your comment a location in the map by clicking this button. </div>
+          </div>
+          <button class="btn btn-primary m-2 btn-lg btn-block" id="submitComment" type="submit">Save Comment</button>
+          <button class="btn m-2 pull-right" id="cancelComment" type="reset">Cancel</button>
         </form>
       </div>
       <div class="p-3" id="commentsListDiv" style="display:none">
