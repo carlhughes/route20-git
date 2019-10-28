@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=7,IE=9">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<div class="container-fluid d-flex h-100 flex-column">
+  <div class="row flex-shrink-0">
+    <nav class="navbar navbar-expand-sm s-navbar navbar-custom w-100"><img src="images/massdot_logo.png" class="img-fluid custom-img h-100" alt="MassDOT Logo"><a class="navbar-brand">Shrewsbury – Route 20 Corridor Master Plan Study</a>
+      <div class="collapse navbar-collapse h-100" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+        </ul>
+ <button class="btn h-100 help-img" type="submit" id="aboutTool"><img src="images/help_white.png" class="img-fluid custom-img" alt="Help" id="help-img"></button>
+      </div>
+    </nav>
+  </div>
+  <div class="row flex-fill d-flex justify-content-start overflow-auto">
+    <div id="viewDiv" class="w-75 h-100" ></div>
+    <div id="info" class="w-25 h-100 overflow-auto" >
+      <div id="helpContents" class="p-3">
+        <h4 class="w-100" style="text-align: center">Welcome to the Shrewsbury Route 20 Safety & Operations Improvements Master Plan Interactive Map!</h4>
+        <br>
+        <p>This map serves as a location for the public to provide its feedback on the design of Route 20 in Shrewsbury, Massachusetts. As we take a look at the concept for the corridor, please keep in mind that the design is meant to accommodate the long-term evolution of Route 20 based on planned new development in this part of the Town of Shrewsbury. You may provide comments on existing conditions in the corridor, but please consider adding comments on how the long-term concept works for you and the town, including how it plans to address land use and transportation goals.</p>
+		<p style="text-align: center; font-style: oblique; font-weight: bold;">Please visit our <a class="" href="https://www.mass.gov/shrewsbury-route-20-corridor-master-plan-study?auHash=ftwmQynrfMX5hkUyWKOxayW0SK1WWWcBxoCiOx2iXKo" target="_blank">study website</a> for more information.</p>  
+        <h5>
+        Instructions
+        </h6>
+        <p>Click the "Add Comment" button below to tell us what you think of the proposed plan. Provide your input by filling out the form, followed by a location, if necessary. </br>
+        </p>
+        <p>Click the "Swipe" icon <img src="images/swipe_icon2.png" alt="Swipe Icon" style="width: 20px"> under the address search in the top left to easily compare the proposed changes with the existing corridor.</p>
+        To enlarge the map, you may zoom inwards or outwards using your mouse or trackpad, or using the (+) and (-) arrows buttons located on the top left of the window. You may also drag the map in any direction to focus in on a certain area. </br>
+        </p>
+        <form class="form-inline mt-2 mt-md-0 p-3" id="submitComment">
+          <button class="btn btn-primary btn-lg btn-block" type="submit" id="submitCommentBtn">Add Comment</button>
+        </form>
+      </div>
+      <div class="p-3" id="commentFormDiv" style="display:none">
+        <form id="commentForm" class= "w-100 h-20 sideContents">
+          <h4>Leave a Comment</h4>
+          <div class="form-group">
+            <label for="nameField">Name</label>
+            <input type="text" class="form-control" id="nameField" placeholder="Optional" name="nameField">
+            <label for="emailField">Email</label>
+            <input type="text" class="form-control" id="emailField" placeholder="Optional" name="emailField">
+          </div>
+          <div class="form-group">
+            <label for="commentField">Comments</label>
+            <textarea class="form-control" id="commentField" placeholder="Enter your comments here" name="commentField" required></textarea>
+            <div class="invalid-feedback"> Please enter a comment in the textarea. </div>
+          </div>
+				<div class="row w-100">
+				  <div class="col-md-auto"><button class="btn btn-custom m-2 w-100" aria-pressed="false" data-toggle="button" id="getLocation" type="action">Add a location</button></div>
+				  <div class="col">OPTIONAL: You may give your comment a location in the map by clicking this button. </div>
+			  </div>
+			<button class="btn btn-primary m-2 btn-lg btn-block" id="submitComment" type="submit">Save Comment</button>
+			          <button class="btn m-2 pull-right" id="cancelComment" type="reset">Cancel</button>
+        </form>
+      </div>
+      <div class="p-3" id="commentsListDiv" style="display:none">
+        <h4 class="w-100 h-10">Other Comments</h4>
+        <div id="results" class="container overflow-auto w-100 h-40 row"> </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://js.arcgis.com/4.13/esri/themes/light/main.css"/>
+<script src="https://js.arcgis.com/4.13/"></script> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
+<script src="js/map.js"></script> 
+<script src="js/controls.js"></script>
+<link rel="stylesheet" href="css/style.css"/>
+</body>
+</html>

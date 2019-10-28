@@ -1,0 +1,45 @@
+html, body {
+    margin: 0;
+    height: 100%;
+	width: 100%;
+}
+
+.navbar-custom {
+    background-color: #14558f;
+	height: 40px;
+	color: #FFFFFF;
+	padding: 0px;
+}
+
+#mainDiv{
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+.nav-link, .btn.my-sm-0 {
+	color: #FFFFFF;
+}
+
+.sideContents{
+    padding-top: 15px;
+}
+
+.esri-widget--button{
+	backrgound-color: grey;
+}
+
+h4{
+	text-align: center;
+}
+
+.btn-custom{
+	color: #fff;
+    background-color: #388557;
+    border-color: #388557;
+}
+
+.help-img, .custom-img{
+	padding: 0px;
+	padding-right:2px;
+	padding-left:2px;
+}
