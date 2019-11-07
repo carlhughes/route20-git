@@ -1,6 +1,9 @@
 $(document).ready(function () {
-
-  require(["esri/views/MapView", "esri/Map", "esri/WebMap", "esri/layers/MapImageLayer", "esri/tasks/QueryTask", "esri/tasks/support/Query", "esri/core/watchUtils",
+  require(["esri/views/MapView",
+    "esri/Map",
+    "esri/tasks/QueryTask",
+    "esri/tasks/support/Query",
+    "esri/core/watchUtils",
     "esri/widgets/Search",
     "esri/widgets/Swipe",
     "esri/widgets/LayerList",
@@ -10,7 +13,7 @@ $(document).ready(function () {
     "esri/tasks/Locator",
     "esri/Graphic",
     "esri/views/draw/Draw"
-  ], function (MapView, Map, WebMap, MapImageLayer, QueryTask, Query, watchUtils, Search, Swipe, LayerList, Measurement, FeatureLayer, WebTileLayer, Locator, Graphic, Draw) {
+  ], function (MapView, Map, QueryTask, Query, watchUtils, Search, Swipe, LayerList, Measurement, FeatureLayer, WebTileLayer, Locator, Graphic, Draw) {
     var map = new Map({
       basemap: "satellite"
     });
@@ -21,7 +24,7 @@ $(document).ready(function () {
       title: "Name: {Name}",
       content: "{Comments}"
     };
-	  
+
     var tiledLayer = new WebTileLayer({
       urlTemplate: "https://api.mapbox.com/styles/v1/howardsteinhudson/cjxq85wga5ax61doc2eyz9h90/tiles/256/{level}/{col}/{row}@2x?access_token=pk.eyJ1IjoiaG93YXJkc3RlaW5odWRzb24iLCJhIjoiY2pydjFwMnNuMDI3dDN5cDZqdW1oZ3EzMiJ9.JeijONHIvuh0aVZeOIXAnQ",
       copyright: 'Map tiles by <a href="https://mass.gov/">MassDOT</a>',
@@ -129,15 +132,14 @@ $(document).ready(function () {
       }
     });
 
-
-    view.on('click', function (event) {})
-
     $("#aboutTool, #cancelComment").click(function () {
       event.preventDefault();
       $('#commentsListDiv').hide()
       $('#commentFormDiv').hide();
       $('#helpContents').show();
       $('#commentForm').trigger("reset");
+      view.graphics.removeAll();
+      $("#getLocation").html('Add Location');
     });
 
 
@@ -157,9 +159,8 @@ $(document).ready(function () {
 
     $("#commentForm").submit(function (event) {
       event.preventDefault();
-      formValue = $(this).serializeArray()
+      var formValue = $(this).serializeArray()
       submitComment(formValue);
-      console.log(formValue);
     })
 
 
@@ -173,13 +174,12 @@ $(document).ready(function () {
           orderByFields: "OBJECTID"
         })
         .done(function (data) {
-          data = JSON.parse(data);
           var results = $('#results');
           results.hide();
           results.empty();
           if ($(data.features).length > 0) {
             $(data.features).each(function () {
-              results.append("<div class='row w-100 container-fluid m-1'><div class='col'><div class='card col'> <div class='card-body> <h6 class='card-subtitle mb-2 text-muted'>Name: " + this.attributes.Name + "</h6> <p class='card-text'>Comment: " + this.attributes.Comments + "</p></div></div></div></div>");
+              results.append("<div class='row w-100 container-fluid m-1 p-0 '><div class='col'><div class='card col comment-row'> <div class='card-body> <h6 class='card-subtitle mb-2 text-muted'>Name: " + this.attributes.Name + "</h6> <p class='card-text'>Comment: " + this.attributes.Comments + "</p></div></div></div></div>");
             });
             results.show();
           } else {
@@ -210,7 +210,7 @@ $(document).ready(function () {
       });
       $('#commentForm').trigger("reset");
       view.graphics.removeAll();
-
+      $("#getLocation").html('Add Location');
     }
 
 
@@ -250,6 +250,5 @@ $(document).ready(function () {
       $("#getLocation").removeClass('active');
       $("#getLocation").html('Change Location');
     }
-
   });
 });

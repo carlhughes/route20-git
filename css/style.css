@@ -41,5 +41,9 @@ h4{
 .help-img, .custom-img{
 	padding: 0px;
 	padding-right:2px;
-	padding-left:2px;
+	padding-left:4px;
+}
+
+.comment-row:hover {
+  background-color: lightgray;
 }

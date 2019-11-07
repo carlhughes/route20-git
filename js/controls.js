@@ -7,6 +7,5 @@ $(document).ready(function(){
 				$('<option></option>').val(this.attributes.Program).html(this.attributes.Program)
 			);
 		});
-		
 	});
 });
