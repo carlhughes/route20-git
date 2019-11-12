@@ -52,7 +52,7 @@ $(document).ready(function () {
       center: [-71.70, 42.258] // Sets center point of view using longitude,latitude
     });
 
-    map.layers.addMany([tiledLayer, corridorPolygon, commentLayer]);
+    map.layers.addMany([tiledLayer, corridorPolygon, commentLayer])
 
     var searchWidget = new Search({
       view: view
@@ -134,7 +134,8 @@ $(document).ready(function () {
 
     $("#aboutTool, #cancelComment").click(function () {
       event.preventDefault();
-      $('#commentsListDiv').hide()
+      $('#commentsListDiv').hide();
+      $('#alertComment').hide();
       $('#commentFormDiv').hide();
       $('#helpContents').show();
       $('#commentForm').trigger("reset");
@@ -144,11 +145,16 @@ $(document).ready(function () {
 
 
     $("#showComments").submit(function (event) {
-      event.preventDefault();
-      $('#helpContents').hide()
-      $('#commentFormDiv').show();
-      $('#commentsListDiv').show();
-      showComments();
+      if (commentLayer.isResolved()) {
+        event.preventDefault();
+        $('#helpContents').hide()
+        $('#commentFormDiv').show();
+        $('#commentsListDiv').show();
+        showComments();
+      } else {
+        alert("Error: Please contact GIS services")
+      }
+      console.log(commentLayer.isResolved());
     })
 
     $("#getLocation").click(function (event) {
@@ -159,6 +165,7 @@ $(document).ready(function () {
 
     $("#commentForm").submit(function (event) {
       event.preventDefault();
+      $('#alertComment').hide()
       var formValue = $(this).serializeArray()
       submitComment(formValue);
     })
@@ -171,7 +178,7 @@ $(document).ready(function () {
           f: "json",
           returnGeometry: "false",
           returnIdsOnly: "false",
-          orderByFields: "OBJECTID"
+          orderByFields: "OBJECTID DESC"
         })
         .done(function (data) {
           var results = $('#results');
@@ -192,6 +199,7 @@ $(document).ready(function () {
     }
 
     function submitComment(formValue) {
+      $('#alertComment').hide()
       theComment = {
         "Name": formValue[0].value,
         "Email": formValue[1].value,
@@ -205,8 +213,14 @@ $(document).ready(function () {
       }
       commentLayer.applyEdits({
         addFeatures: [addFeature],
-      }).then(function () {
-        showComments();
+      }).then(function (results) {
+        $.each(results.addFeatureResults, function (index, value) {
+          if (value.error !== null) {
+            $('#alertComment').show()
+          } else {
+            showComments();
+          }
+        });
       });
       $('#commentForm').trigger("reset");
       view.graphics.removeAll();
