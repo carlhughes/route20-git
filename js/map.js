@@ -32,7 +32,7 @@ $(document).ready(function () {
     });
 
     var commentLayer = new FeatureLayer({
-      url: "https://gisdev.massdot.state.ma.us/server/rest/services/CIP/ShrewsburyRoute20CorridorProject/FeatureServer/1",
+      url: "https://gis.massdot.state.ma.us/rh/rest/services/Projects/ShrewsburyProject/FeatureServer/1",
       title: "Comments",
       popupEnabled: true,
       popupTemplate: template
@@ -52,7 +52,7 @@ $(document).ready(function () {
       center: [-71.70, 42.258] // Sets center point of view using longitude,latitude
     });
 
-    map.layers.addMany([tiledLayer, corridorPolygon, commentLayer])
+    map.layers.addMany([tiledLayer, corridorPolygon, commentLayer]);
 
     var searchWidget = new Search({
       view: view
@@ -134,8 +134,7 @@ $(document).ready(function () {
 
     $("#aboutTool, #cancelComment").click(function () {
       event.preventDefault();
-      $('#commentsListDiv').hide();
-      $('#alertComment').hide();
+      $('#commentsListDiv').hide()
       $('#commentFormDiv').hide();
       $('#helpContents').show();
       $('#commentForm').trigger("reset");
@@ -145,16 +144,11 @@ $(document).ready(function () {
 
 
     $("#showComments").submit(function (event) {
-      if (commentLayer.isResolved()) {
-        event.preventDefault();
-        $('#helpContents').hide()
-        $('#commentFormDiv').show();
-        $('#commentsListDiv').show();
-        showComments();
-      } else {
-        alert("Error: Please contact GIS services")
-      }
-      console.log(commentLayer.isResolved());
+      event.preventDefault();
+      $('#helpContents').hide()
+      $('#commentFormDiv').show();
+      $('#commentsListDiv').show();
+      showComments();
     })
 
     $("#getLocation").click(function (event) {
@@ -165,20 +159,19 @@ $(document).ready(function () {
 
     $("#commentForm").submit(function (event) {
       event.preventDefault();
-      $('#alertComment').hide()
       var formValue = $(this).serializeArray()
       submitComment(formValue);
     })
 
 
     function showComments() {
-      $.post("https://gisdev.massdot.state.ma.us/server/rest/services/CIP/ShrewsburyRoute20CorridorProject/FeatureServer/1/query", {
+      $.post("https://gis.massdot.state.ma.us/rh/rest/services/Projects/ShrewsburyProject/FeatureServer/1/query", {
           where: "1=1",
           outFields: "*",
           f: "json",
           returnGeometry: "false",
           returnIdsOnly: "false",
-          orderByFields: "OBJECTID DESC"
+          orderByFields: "OBJECTID"
         })
         .done(function (data) {
           var results = $('#results');
@@ -186,6 +179,7 @@ $(document).ready(function () {
           results.empty();
           if ($(data.features).length > 0) {
             $(data.features).each(function () {
+				console.log(this);
               results.append("<div class='row w-100 container-fluid m-1 p-0 '><div class='col'><div class='card col comment-row'> <div class='card-body> <h6 class='card-subtitle mb-2 text-muted'>Name: " + this.attributes.Name + "</h6> <p class='card-text'>Comment: " + this.attributes.Comments + "</p></div></div></div></div>");
             });
             results.show();
@@ -199,7 +193,6 @@ $(document).ready(function () {
     }
 
     function submitComment(formValue) {
-      $('#alertComment').hide()
       theComment = {
         "Name": formValue[0].value,
         "Email": formValue[1].value,
@@ -213,14 +206,8 @@ $(document).ready(function () {
       }
       commentLayer.applyEdits({
         addFeatures: [addFeature],
-      }).then(function (results) {
-        $.each(results.addFeatureResults, function (index, value) {
-          if (value.error !== null) {
-            $('#alertComment').show()
-          } else {
-            showComments();
-          }
-        });
+      }).then(function () {
+        showComments();
       });
       $('#commentForm').trigger("reset");
       view.graphics.removeAll();

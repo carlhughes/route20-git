@@ -20,16 +20,19 @@
     <div id="viewDiv" class="w-75 h-100" ></div>
     <div id="info" class="w-25 h-100 overflow-auto" >
       <div id="helpContents" class="p-3">
-        <h4 class="w-100" style="text-align: center">Welcome to the Shrewsbury Route 20 Safety & Operations Improvements Master Plan Interactive Map!</h4>
+        <h4 class="w-100" style="text-align: center">Welcome to the Shrewsbury Route 20 Master Plan Interactive Map!</h4>
         <br>
-        <p>This map serves as a location for the public to provide its feedback on the design of Route 20 in Shrewsbury, Massachusetts. As we take a look at the concept for the corridor, please keep in mind that the design is meant to accommodate the long-term evolution of Route 20 based on planned new development in this part of the Town of Shrewsbury. You may provide comments on existing conditions in the corridor, but please consider adding comments on how the long-term concept works for you and the town, including how it plans to address land use and transportation goals.</p>
-        <p style="text-align: center; font-style: oblique; font-weight: bold;">Please visit our <a class="" href="https://www.mass.gov/shrewsbury-route-20-corridor-master-plan-study?auHash=ftwmQynrfMX5hkUyWKOxayW0SK1WWWcBxoCiOx2iXKo" target="_blank">study website</a> for more information.</p>
+        <p>This map serves as a location for the public to provide its feedback on the design of Route 20 in Shrewsbury, Massachusetts. As we take a look at the concept for the corridor, please keep in mind that the design is meant to accommodate the long-term evolution of Route 20 based on planned new development in this part of the Town of Shrewsbury.</p>
+		<p>We want to hear your feedback on proposed long-term improvements to safety and operations on Route 20 in Shrewsbury, Massachusetts. </p>
         <h5> Instructions </h5>
-        <p>Click the "Add Comment" button below to tell us what you think of the proposed plan. Provide your input by filling out the form, followed by a location, if necessary. <br>
+        <p>1. Zoom in or out using your mouse or trackpad or the (+) and (-) buttons located on the top left of the window to enlarge the map and see details of the proposed design. You may also drag the map in any direction to focus in on a certain area.<br>
         </p>
-        <p>Click the "Swipe" icon <img src="images/swipe_icon2.png" alt="Swipe Icon" style="width: 20px"> under the address search in the top left to easily compare the proposed changes with the existing corridor.</p>
-        <p> To enlarge the map, you may zoom inwards or outwards using your mouse or trackpad, or using the (+) and (-) arrows buttons located on the top left of the window. You may also drag the map in any direction to focus in on a certain area. <br>
+        <p>2. Click the "Swipe" icon <img src="images/swipe_icon2.png" alt="Swipe Icon" style="width: 20px"> under the address search in the top left corner of the map to compare the proposed changes with the existing corridor.</p>
+        <p>3. Click on the “👁” icons in the top right corner of the map to hide or display comments and the project corridor map layer.<br>
+		<p>4. Click the "Add Comment" button below to tell us what you think of the proposed plan. Fill out the form and add a location, if applicable.<br>
         </p>
+				<p>This master plan is meant to accommodate the long-term evolution of Route 20 based on new and planned development in this part of the Town of Shrewsbury. Please consider adding comments on how the long-term concept might work for you and the town as it plans to address land use and transportation in the near and long-term future.</p>
+		<p style="text-align: center; font-style: oblique; font-weight: bold;">Please visit our <a class="" href="https://www.mass.gov/shrewsbury-route-20-corridor-master-plan-study?auHash=ftwmQynrfMX5hkUyWKOxayW0SK1WWWcBxoCiOx2iXKo" target="_blank">study website</a> for more information.</p>
         <form class="form-inline mt-2 mt-md-0 p-3" id="showComments">
           <button class="btn btn-primary btn-lg btn-block" type="submit" id="submitCommentBtn">Add Comment</button>
         </form>
@@ -55,9 +58,6 @@
             <div class="col">OPTIONAL: You may give your comment a location in the map by clicking this button. </div>
           </div>
           <button class="btn btn-primary m-2 btn-lg btn-block" id="submitComment" type="submit">Save Comment</button>
-			<div class="alert alert-danger m-2" role="alert" id="alertComment" style="display:none">
-			Comment could not be saved! Please try again later.
-			</div>
           <button class="btn m-2 pull-right" id="cancelComment" type="reset">Cancel</button>
         </form>
       </div>
